@@ -49,7 +49,9 @@ Summer Winter Trees is a lightweight Java Swing application that renders an inte
 - `src/SummerTree.java` – Concrete tree implementation, recursion logic, and application entry point
 
 ## Demo
-- [Watch the application Demo](SummerWinterTrees%20Recording%202025-12-25%20234004.mp4)
+<video src="SummerWinterTrees%20Recording%202025-12-25%20234004.mp4" controls autoplay loop muted playsinline width="640">
+   Your browser does not support the video tag. You can download the clip instead: <a href="SummerWinterTrees%20Recording%202025-12-25%20234004.mp4">Watch the application demo</a>.
+</video>
 
 ## Usage Notes
 - The canvas requests focus automatically on launch; click the drawing area if keyboard input is ignored.
