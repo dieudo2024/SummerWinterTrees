@@ -1,33 +1,38 @@
 # Summer Winter Trees
 
-A small Swing application that renders an interactive fractal tree and can toggle between summer and winter appearances. The tree reacts to keyboard input so you can explore different branching depths and skews in real time.
+Summer Winter Trees is a lightweight Java Swing application that renders an interactive fractal tree. The visualization supports seasonal color themes and real-time adjustments via keyboard controls, making it suitable for demonstrations of recursion and simple graphics programming.
 
 ## Features
-- Recursive drawing of a fractal tree with smooth anti-aliased branches
-- Seasonal color palette with on-the-fly toggle between summer and winter looks
-- Adjustable recursion depth and branch skewness using arrow keys
-- Simple command-line entry point for quick testing
+- Recursive rendering of a fractal tree with anti-aliased branches
+- Instant summer ↔ winter palette toggling with revised depth limits
+- Runtime control of recursion depth and branch skewness through keyboard input
+- Standalone entry point for rapid execution and experimentation
 
-## Controls
-- **Arrow Up / Down**: Increase or decrease recursion depth within safe bounds
-- **Arrow Left / Right**: Adjust branch skewness incrementally
-- **Space**: Toggle winter mode, which changes colors and depth limits
+## Prerequisites
+- Java Development Kit (JDK) 17 or newer
+- Command-line access to `javac` and `java`
 
-## Getting Started
-1. Ensure you have Java 17 or later installed (`java -version`).
-2. Compile the sources:
+## Setup
+1. Clone or download the repository to your local machine.
+2. Open a terminal in the project root directory.
+3. Compile the sources:
    ```bash
    javac -d out src/SummerTreeAbstract.java src/SummerTree.java
    ```
-3. Run the application:
+4. Run the application:
    ```bash
    java -cp out SummerTree
    ```
 
-## Project Structure
-- `src/SummerTreeAbstract.java` – Swing frame, rendering helpers, and input plumbing
-- `src/SummerTree.java` – Concrete tree behavior, recursion logic, and entry point
+## Controls
+- Arrow Up / Arrow Down: Increase or decrease recursion depth within safe bounds
+- Arrow Left / Arrow Right: Adjust branch skewness incrementally
+- Space: Toggle winter mode, which updates colors and depth constraints
 
-## Notes
-- The window grabs keyboard focus when it appears. If arrow keys do not respond, click the canvas area once.
-- Depth is clamped to avoid runaway recursion; winter mode uses a lower maximum.
+## Project Structure
+- `src/SummerTreeAbstract.java` – Swing frame, rendering helpers, seasonal UI management, and input plumbing
+- `src/SummerTree.java` – Concrete tree implementation, recursion logic, and application entry point
+
+## Usage Notes
+- The canvas requests focus automatically on launch; click the drawing area if keyboard input is ignored.
+- Depth is clamped to prevent excessive recursion; winter mode enforces a lower maximum to maintain performance.
