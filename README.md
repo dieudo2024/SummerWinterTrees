@@ -13,6 +13,7 @@ Summer Winter Trees is a lightweight Java Swing application that renders an inte
 - Command-line access to `javac` and `java`
 
 ## Setup
+### Command Line
 1. Clone or download the repository to your local machine.
 2. Open a terminal in the project root directory.
 3. Compile the sources:
@@ -23,6 +24,20 @@ Summer Winter Trees is a lightweight Java Swing application that renders an inte
    ```bash
    java -cp out SummerTree
    ```
+
+### Visual Studio Code
+1. Install the "Extension Pack for Java" (or at minimum "Language Support for Java by Red Hat") in VS Code.
+2. Open the project folder in VS Code (`File` → `Open Folder…`).
+3. When prompted, trust the authors and allow VS Code to configure the Java project.
+4. Use the Run and Debug view (Ctrl+Shift+D) to launch `SummerTree` directly, or right-click `SummerTree.java` in the Explorer and choose "Run Java".
+5. If you prefer tasks, create `.vscode/tasks.json` with a `javac` build task and trigger it via `Terminal` → `Run Build Task…` before running.
+
+### IntelliJ IDEA
+1. Launch IntelliJ IDEA and select `Open` to choose the project directory.
+2. When the import dialog appears, accept the default "Create project from existing sources" and ensure the JDK 17 (or newer) SDK is selected.
+3. Allow IntelliJ to index the project; verify there are no errors in the `Project` tool window.
+4. Open `SummerTree.java`, then click the gutter play icon beside the `main` method and select `Run 'SummerTree.main()'`.
+5. Optionally, create an application run configuration (Run → Edit Configurations…) targeting `SummerTree` for repeated launches.
 
 ## Controls
 - Arrow Up / Arrow Down: Increase or decrease recursion depth within safe bounds
