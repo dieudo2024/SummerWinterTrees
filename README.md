@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/3a91235a-4c40-4cc3-b762-1b268ba0945d
+
 # Summer Winter Trees
 
 Summer Winter Trees is a lightweight Java Swing application that renders an interactive fractal tree. The visualization supports seasonal color themes and real-time adjustments via keyboard controls, making it suitable for demonstrations of recursion and simple graphics programming.
