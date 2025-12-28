@@ -87,10 +87,17 @@ public abstract class SummerTreeAbstract extends JFrame implements KeyListener {
     }
 
     protected Color nextCenterColor(Color oldColor, int depth) {
+        if (!isWinterMode) {
+            return new Color(
+                Math.min((int) (0.8 * oldColor.getRed() + 0.2 * Color.GREEN.getRed()), 255),
+                Math.min((int) (0.8 * oldColor.getGreen() + 0.2 * Color.GREEN.getGreen()), 255),
+                Math.min((int) (0.8 * oldColor.getBlue() + 0.2 * Color.GREEN.getBlue()), 255));
+        }
+
         return new Color(
-                Math.min((int) (0.8 * oldColor.getRed() + 0.1 * Color.WHITE.getRed() + 0.04 * depth * 255), 255),
-                Math.min((int) (0.8 * oldColor.getGreen() + 0.1 * Color.WHITE.getGreen() + 0.04 * depth * 255), 255),
-                Math.min((int) (0.8 * oldColor.getBlue() + 0.1 * Color.WHITE.getBlue() + 0.04 * depth * 255), 255));
+            Math.min((int) (0.8 * oldColor.getRed() + 0.1 * Color.WHITE.getRed() + 0.04 * depth * 255), 255),
+            Math.min((int) (0.8 * oldColor.getGreen() + 0.1 * Color.WHITE.getGreen() + 0.04 * depth * 255), 255),
+            Math.min((int) (0.8 * oldColor.getBlue() + 0.1 * Color.WHITE.getBlue() + 0.04 * depth * 255), 255));
     }
 
     protected void drawBranch(double xStart, double yStart, double xEnd, double yEnd, double length, double thickness,

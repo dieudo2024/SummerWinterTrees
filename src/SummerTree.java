@@ -42,16 +42,17 @@ public class SummerTree extends SummerTreeAbstract {
         double fromY = y +Math.sin(alpha) * length ;
 
         drawBranch(x, y, fromX, fromY, length, thickness, color);
-        //branch length  1/4 = 0.25 %
-        drawTreeRec(fromX, fromY, alpha + 0.5 + skewness, length * 0.75, thickness * 0.9, nextRightColor(color, depth),
-                depth - 1);
 
-        if (isWinterMode()) {
-            drawTreeRec(fromX, fromY, alpha, length * 0.95, thickness * 0.9, nextCenterColor(color, depth), depth - 1);
-        }
+        double nextLength = length * 0.75;
+        double nextThickness = thickness * 0.9;
 
-        drawTreeRec(fromX, fromY, alpha - 0.5 + skewness, length * 0.75, thickness * 0.9, nextLeftColor(color, depth),
-                depth - 1);
+        drawTreeRec(fromX, fromY, alpha + 0.5 + skewness, nextLength, nextThickness, nextRightColor(color, depth),
+            depth - 1);
+
+        drawTreeRec(fromX, fromY, alpha, length * 0.95, nextThickness, nextCenterColor(color, depth), depth - 1);
+
+        drawTreeRec(fromX, fromY, alpha - 0.5 + skewness, nextLength, nextThickness, nextLeftColor(color, depth),
+            depth - 1);
     }
 
     //implementing the tree's event handler handleInput(int keyCode) from superClass
