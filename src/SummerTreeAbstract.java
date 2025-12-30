@@ -199,7 +199,7 @@ public abstract class SummerTreeAbstract extends JFrame implements KeyListener {
      * @return maximum allowed recursion depth
      */
     protected int getMaxDepth() {
-        return isWinterMode ? 10 : 10;
+        return isWinterMode ? 10 : 12;
     }
 
     /**
@@ -286,7 +286,7 @@ public abstract class SummerTreeAbstract extends JFrame implements KeyListener {
      * Computes an approximation of pi suitable for deriving trunk orientation.
      *
      * @param n refinement steps to include in the approximation
-    * @return approximation of pi
+        * @return approximation of pi
      */
     protected abstract double computePi(int n);
 

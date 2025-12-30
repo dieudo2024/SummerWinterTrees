@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.Serial;
@@ -23,7 +22,7 @@ public class SummerTree extends SummerTreeAbstract {
      * Approximates pi using the arctangent continued fraction to determine the trunk angle.
      *
      * @param n number of refinement steps to execute (must be non-negative)
-    * @return approximation of pi after {@code n} iterations
+     * @return approximation of pi after {@code n} iterations
      * @throws IllegalArgumentException if {@code n} is negative
      */
     @Override
@@ -36,15 +35,15 @@ public class SummerTree extends SummerTreeAbstract {
     }
 
     /**
-    * Recursively evaluates the continued fraction used in {@link #computePi(int)}.
+     * Recursively evaluates the continued fraction used in {@link #computePi(int)}.
      *
      * @param n    remaining iterations to compute
      * @param last accumulated value from the previous level
-    * @return next refinement of the continued fraction
+     * @return next refinement of the continued fraction
      */
     private double computePiHelper(int n, double last) {
         if (n == 0) {
-            return last * 2.0 ;
+            return last * 2.0;
         } else {
             return computePiHelper(n - 1, 1.0 + (double) n / (n * 2.0 + 1.0) * last);
         }
@@ -55,13 +54,13 @@ public class SummerTree extends SummerTreeAbstract {
     protected void drawTreeRec(double x, double y, double alpha, double length, double thickness, Color color, int depth) {
         if ((length <= 1.0) || (depth <= 0)) {
             if (isWinterMode()) {
-                //drawGlitterBalls(x, y, thickness);
+                // drawGlitterBalls(x, y, thickness);
             }
             return;
         }
-        //Using methods for trigonometric functions sin(x) and cos(x)
-        double fromX =  x + Math.cos(alpha) * length ;
-        double fromY = y +Math.sin(alpha) * length ;
+        // Using methods for trigonometric functions sin(x) and cos(x)
+        double fromX = x + Math.cos(alpha) * length;
+        double fromY = y + Math.sin(alpha) * length;
 
         drawBranch(x, y, fromX, fromY, length, thickness, color);
 
@@ -90,22 +89,20 @@ public class SummerTree extends SummerTreeAbstract {
                 depth += 1;
             case KeyEvent.VK_DOWN -> // mirror decrement for consistent control feel
                 depth -= 1;
-            case KeyEvent.VK_LEFT -> //decreasing skewness by 0.05
+            case KeyEvent.VK_LEFT -> // decreasing skewness by 0.05
                 skewness -= 0.05;
-            case KeyEvent.VK_RIGHT -> //increasing skewness by 0.05
-                
+            case KeyEvent.VK_RIGHT -> // increasing skewness by 0.05
                 skewness += 0.05;
-            case KeyEvent.VK_SPACE -> // using setWinterMode( bool) to change into Christmas Tree
+            case KeyEvent.VK_SPACE -> // using setWinterMode(bool) to change into Christmas Tree
                 setWinterMode(!isWinterMode());
             default -> {
                 return;
             }
         }
-        // depth
         enforceDepthBounds();
 
-        if (Math.abs(skewness) >= Math.pow(2.0,0.05)) {
-            skewness = Math.signum(skewness) * Math.pow(2.0,0.05);
+        if (Math.abs(skewness) >= Math.pow(2.0, 0.05)) {
+            skewness = Math.signum(skewness) * Math.pow(2.0, 0.05);
         }
 
         refreshTree();
