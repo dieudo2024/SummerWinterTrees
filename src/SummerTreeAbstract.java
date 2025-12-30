@@ -118,8 +118,7 @@ public abstract class SummerTreeAbstract extends JFrame implements KeyListener {
             return;
         }
 
-        //double baseLength = Math.min(height, width) * 0.3;
-        drawTreeRec(width / 2.0, height - 20.0, -computePi(100) / 2.0, 80, 15,
+        drawTreeRec(width / 2.0, height - 20.0, -computePi(100) / 2.0, 90, 15,
                 new Color(155, 100, 60), depth);
     }
 
