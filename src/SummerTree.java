@@ -3,15 +3,29 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.Serial;
 
+/**
+ * Renders the interactive summer tree variant, providing the concrete recursion,
+ * keyboard handling, and application entry point layered atop {@link SummerTreeAbstract}.
+ */
 public class SummerTree extends SummerTreeAbstract {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Creates a new windowed tree visualization and prepares the rendering surface.
+     */
     public SummerTree() {
         super();
     }
-    //Calculating value of Pi using computeHelper() method
+
+    /**
+     * Approximates pi using the arctangent continued fraction to determine the trunk angle.
+     *
+     * @param n number of refinement steps to execute (must be non-negative)
+    * @return approximation of pi after {@code n} iterations
+     * @throws IllegalArgumentException if {@code n} is negative
+     */
     @Override
     protected double computePi(int n) {
         if (n < 0) {
@@ -21,6 +35,13 @@ public class SummerTree extends SummerTreeAbstract {
         return computePiHelper(n, 1);
     }
 
+    /**
+    * Recursively evaluates the continued fraction used in {@link #computePi(int)}.
+     *
+     * @param n    remaining iterations to compute
+     * @param last accumulated value from the previous level
+    * @return next refinement of the continued fraction
+     */
     private double computePiHelper(int n, double last) {
         if (n == 0) {
             return last * 2.0 ;
@@ -28,7 +49,8 @@ public class SummerTree extends SummerTreeAbstract {
             return computePiHelper(n - 1, 1.0 + (double) n / (n * 2.0 + 1.0) * last);
         }
     }
-    //implementing method drawTreeRec() from superClass
+
+    /** {@inheritDoc} */
     @Override
     protected void drawTreeRec(double x, double y, double alpha, double length, double thickness, Color color, int depth) {
         if ((length <= 1.0) || (depth <= 0)) {
@@ -55,15 +77,19 @@ public class SummerTree extends SummerTreeAbstract {
             depth - 1);
     }
 
-    //implementing the tree's event handler handleInput(int keyCode) from superClass
+    /**
+     * Responds to keyboard events by adjusting recursion depth, skewness, or seasonal mode.
+     *
+     * @param keyCode virtual key code received from the {@link java.awt.event.KeyListener}
+     */
     @Override
     public void handleInput(int keyCode) {
 
         switch (keyCode) {
-            case KeyEvent.VK_UP -> //depth is in range [-0.25,+0.25]
-                depth += 2;
-            case KeyEvent.VK_DOWN -> //depth is in range [-0.25,+0.25]
-                depth -= 2;
+            case KeyEvent.VK_UP -> // single-step depth growth keeps recursion manageable
+                depth += 1;
+            case KeyEvent.VK_DOWN -> // mirror decrement for consistent control feel
+                depth -= 1;
             case KeyEvent.VK_LEFT -> //decreasing skewness by 0.05
                 skewness -= 0.05;
             case KeyEvent.VK_RIGHT -> //increasing skewness by 0.05
@@ -85,10 +111,15 @@ public class SummerTree extends SummerTreeAbstract {
         refreshTree();
     }
 
+    /**
+     * Launches the fractal tree visualization. Intended for quick experimentation and demos.
+     *
+     * @param args ignored command-line arguments
+     */
     public static void main(String[] args) {
         try {
             SummerTree cool = new SummerTree();
-            System.out.println( "The Maximum recursion depth is "+cool.depth+ " ranging [1,15]");
+            System.out.println("The maximum recursion depth range is [1, " + cool.getMaxDepth() + "] in summer mode");
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
         }
