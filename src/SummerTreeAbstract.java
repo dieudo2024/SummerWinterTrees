@@ -199,7 +199,7 @@ public abstract class SummerTreeAbstract extends JFrame implements KeyListener {
      * @return maximum allowed recursion depth
      */
     protected int getMaxDepth() {
-        return isWinterMode ? 10 : 12;
+        return isWinterMode ? 10 : 10;
     }
 
     /**
